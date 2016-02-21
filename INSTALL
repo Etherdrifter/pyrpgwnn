@@ -1,17 +1,29 @@
-Clone the repository BEFORE setting up the virtual environment since you
-can't git clone into a non-empty directory.
+WARNING: This guide assumes that you have a github account and a working knowledge of linux.
+
+ADVANCED USER TIP: Clone the repository BEFORE setting up the virtual environment since you can't git clone into a non-empty directory.
+
+
 
 If you are looking to help develop pyrpgwnn, you should use github's "Fork"
 option at https://github.com/rpgwnn/pyrpgwnn to create a copy within your
 own github account. Once that has been done, you should use the clone URL
-of your forked repository in the following command.
+of your forked repository in the following command:
 
-  git clone git@github.com:$YOUR_GITHUB_USER/pyrpgwnn.git pyrpgwnn
+  git clone git@github.com:YOUR_GITHUB_USER/pyrpgwnn.git pyrpgwnn
 
-In order to easily merge upstream changes, you should add the upstream
-source URL too.
+EROR NOTE: A commonly recieved error is "Permission denied (publickey)", please see this page for a resolution - https://help.github.com/articles/error-permission-denied-publickey/
 
+
+In order to easily merge upstream changes (keeping your copy of the repo up to date), you should add the upstream source URL too:
+
+  cd pyrpgwnn
+  git init
   git remote add upstream https://github.com/rpgwnn/pyrpgwnn.git
+  cd ..
+
+If you are uncertain of what version of Python you are running for the next part simply type in:
+
+  python -V
 
 Assuming your system default is Python 2, but you have installed Python 3
 separately, you'll need to create a virtual environment that uses Python 3.
@@ -20,20 +32,21 @@ The command is likely to be something like this:
   virtualenv-3.3 pyrpgwnn
 
 If you only have Python 3.0 - 3.3 installed on your system, you can use the
-normal virtualenv program.
+normal virtualenv program:
 
   virtualenv pyrpgwnn
 
-If you have Python 3.3 or higher installed, use pyvenv instead of virtualenv
+If you have Python 3.3 or higher installed, use pyvenv instead of virtualenv:
 
   pyvenv pyrpgwnn
+
 
 The virtual environment should create several directories including bin,
 include and lib. The project .gitignore is setup to exclude those from
 the repository and you should not create anything project specific in
 these directories.
 
-Before doing any development, ensure you activate the virtual environment.
+Before doing any development, ensure you activate the virtual environment:
 
   source pyrpgwnn/bin/activate
 
@@ -46,7 +59,7 @@ and then you can run the application, hack on the code, etc.
 If you have not yet installed any of the required Python modules into
 the virtual environment, you should run:
 
-  pip install -r requirements.txt
+  sudo pip install -r requirements.txt
 
 After this, setup the database and bring the schema up to the current one.
 
